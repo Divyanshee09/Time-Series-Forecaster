@@ -3,6 +3,11 @@
 A fully interactive, end-to-end Streamlit application for univariate time series forecasting.  
 Built for data analysts and business users to **upload, clean, analyze, and forecast** time series data without writing a single line of code.
 
+## 🖼️ Website Preview
+
+![Website UI](Screenshots/website-overview.png)
+![Results Overview](Screenshots/results-overview.png)
+
 ## 🔍 Key Features
 
 - **📂 Smart File Uploader**
