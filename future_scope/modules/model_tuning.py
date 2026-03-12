@@ -367,9 +367,9 @@ def forecast_future(best_model, ts, target_col, train, test, last_actual_value, 
         future_dates = pd.date_range(start=last_date, periods=periods + 1, freq=freq)[1:]
 
         fig = go.Figure()
-        fig.add_trace(go.Scatter(x=train.index, y=train_original, mode='lines', name='Train Data', line=dict(color='blue', width=2)))
-        fig.add_trace(go.Scatter(x=test.index, y=test_original, mode='lines', name='Test Data', line=dict(color='green', width=2)))
-        fig.add_trace(go.Scatter(x=future_dates, y=forecast_original, mode='lines', name='Forecast', line=dict(color='red', width=2)))
+        fig.add_trace(go.Scatter(x=train.index, y=train_original, mode='lines', name='Train Data', line=dict(color='blue', width=2), hovertemplate='%{x|%A, %d %b %Y}<br>Value: %{y}<extra></extra>'))
+        fig.add_trace(go.Scatter(x=test.index, y=test_original, mode='lines', name='Test Data', line=dict(color='green', width=2), hovertemplate='%{x|%A, %d %b %Y}<br>Value: %{y}<extra></extra>'))
+        fig.add_trace(go.Scatter(x=future_dates, y=forecast_original, mode='lines', name='Forecast', line=dict(color='red', width=2), hovertemplate='%{x|%A, %d %b %Y}<br>Value: %{y}<extra></extra>'))
 
         # Update layout for the plot
         fig.update_layout(

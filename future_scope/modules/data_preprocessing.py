@@ -43,8 +43,18 @@ def index_set(df, datetime_col, data_continous):
 
 def is_white_noise(ts, target_col, alpha=0.05):
     
-    lags = min(20, len(ts[target_col]) - 1)
-    result = acorr_ljungbox(ts[target_col], lags=lags, return_df=True)
+    if len(ts[target_col].dropna()) < 2:
+        # Not enough data points to perform the test
+        return False
+
+    lags = min(20, len(ts[target_col].dropna()) - 1)
+    if lags < 1:
+        return False  # Can't run Ljung-Box test with < 1 lag
+
+    result = acorr_ljungbox(ts[target_col].dropna(), lags=lags, return_df=True)
+    
+    # lags = min(20, len(ts[target_col]) - 1)
+    # result = acorr_ljungbox(ts[target_col], lags=lags, return_df=True)
     return (result["lb_pvalue"] > alpha).all()
 
 def stationarity(ts, target_col, max_diff=2):

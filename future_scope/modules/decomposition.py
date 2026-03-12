@@ -6,11 +6,11 @@ from plotly.subplots import make_subplots
 from statsmodels.tsa.seasonal import seasonal_decompose, STL
 
 def trend_seasonality_analysis(ts, target_col):
-    st.subheader("Original Time Series")
+    # st.subheader("Original Time Series")
     fig1 = px.line(ts, y=target_col, title='Time Series Overview')
-    st.plotly_chart(fig1, use_container_width=True)
+    # st.plotly_chart(fig1, use_container_width=True)
 
-    st.subheader("Seasonal Decomposition (Additive)")
+    # st.sub, indicating model is missing syheader("Seasonal Decomposition (Additive)")
     decomposition = seasonal_decompose(ts[target_col], model='additive', period=12)
     additive_df = pd.DataFrame({
         "Trend": decomposition.trend,
@@ -30,8 +30,8 @@ def trend_seasonality_analysis(ts, target_col):
         fig.update_layout(height=800, title_text=title, showlegend=False)
         return fig
 
-    fig2 = make_decomposition_plot(ts.index, ts[target_col], additive_df, "Seasonal Decomposition (Additive)")
-    st.plotly_chart(fig2, use_container_width=True)
+    # fig2 = make_decomposition_plot(ts.index, ts[target_col], additive_df, "Seasonal Decomposition (Additive)")
+    # st.plotly_chart(fig2, use_container_width=True)
 
     if not (ts[target_col] <= 0).any():
         st.subheader("Seasonal Decomposition (Multiplicative)")

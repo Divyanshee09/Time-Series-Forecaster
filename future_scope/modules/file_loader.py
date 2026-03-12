@@ -384,6 +384,12 @@ def load_time_series_data():
                 data = data.sort_values(by=datetime_col)
             else:
                 st.warning("No datetime column detected automatically.")
+                datetime_cols = data.columns.tolist()
+            
+                datetime_col = st.selectbox(
+                    "Select the datetime column:", 
+                    options=datetime_cols
+                )
             
             # Now, re-convert the final DataFrame to CSV-style
             csv_buffer = StringIO()
