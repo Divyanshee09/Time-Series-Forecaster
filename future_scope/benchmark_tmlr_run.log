@@ -1,0 +1,91 @@
+Checking for real datasets...
+✓ All real datasets found
+
+
+======================================================================
+TMLR FINAL BENCHMARK - REAL DATASETS ONLY
+======================================================================
+
+
+======================================================================
+Dataset: M4_Hourly
+======================================================================
+N=700, Train=560, Test=140, Frequency=h
+  [1/2] Prophet (MAP estimation)... 00:00:17 - cmdstanpy - INFO - Chain [1] start processing
+00:00:17 - cmdstanpy - INFO - Chain [1] done processing
+✓ RMSE=45.016 (95% CI: [39.995, 49.609]), Time=0.1s
+  [2/2] FutureScope (Optimized)... Selecting model (is_seasonal=True, strength=0.9786)...
+✓ RMSE=53.705 (95% CI: [46.224, 60.643]), ✓ White noise, Time=58.9s
+  DM-test: p=0.0000 ✗, Δ RMSE: -19.3%
+
+======================================================================
+Dataset: Electricity
+======================================================================
+N=500, Train=400, Test=100, Frequency=D
+  [1/2] Prophet (MAP estimation)... 00:01:17 - cmdstanpy - INFO - Chain [1] start processing
+00:01:17 - cmdstanpy - INFO - Chain [1] done processing
+✓ RMSE=0.932 (95% CI: [0.851, 1.017]), Time=0.1s
+  [2/2] FutureScope (Optimized)... Selecting model (is_seasonal=True, strength=0.6064)...
+✓ RMSE=0.763 (95% CI: [0.695, 0.827]), ✓ White noise, Time=4.5s
+  DM-test: p=0.0000 ✗, Δ RMSE: +18.2%
+
+======================================================================
+Dataset: Bitcoin
+======================================================================
+N=366, Train=292, Test=74, Frequency=D
+  [1/2] Prophet (MAP estimation)... 00:01:22 - cmdstanpy - INFO - Chain [1] start processing
+00:01:22 - cmdstanpy - INFO - Chain [1] done processing
+✓ RMSE=11699.289 (95% CI: [10515.729, 12770.698]), Time=0.0s
+  [2/2] FutureScope (Optimized)... Selecting model (is_seasonal=True, strength=0.3586)...
+✓ RMSE=14619.625 (95% CI: [13041.078, 15957.634]), ✓ White noise, Time=0.1s
+  DM-test: p=0.0149 ✗, Δ RMSE: -25.0%
+
+======================================================================
+Dataset: COVID19
+======================================================================
+N=600, Train=480, Test=120, Frequency=D
+  [1/2] Prophet (MAP estimation)... 00:01:23 - cmdstanpy - INFO - Chain [1] start processing
+00:01:23 - cmdstanpy - INFO - Chain [1] done processing
+✓ RMSE=164747.475 (95% CI: [157619.400, 172302.968]), Time=0.1s
+  [2/2] FutureScope (Optimized)... Selecting model (is_seasonal=True, strength=0.3850)...
+✓ RMSE=25239.260 (95% CI: [22781.114, 27314.773]), ✓ White noise, Time=3.4s
+  DM-test: p=0.0000 ✗, Δ RMSE: +84.7%
+
+======================================================================
+Dataset: Airline
+======================================================================
+N=144, Train=115, Test=29, Frequency=MS
+  [1/2] Prophet (MAP estimation)... 00:01:27 - cmdstanpy - INFO - Chain [1] start processing
+00:01:27 - cmdstanpy - INFO - Chain [1] done processing
+✓ RMSE=41.331 (95% CI: [32.379, 49.760]), Time=0.0s
+  [2/2] FutureScope (Optimized)... Selecting model (is_seasonal=True, strength=0.9845)...
+✓ RMSE=35.083 (95% CI: [26.761, 43.909]), ✓ White noise, Time=0.2s
+  DM-test: p=0.1643 ✓, Δ RMSE: +15.1%
+
+======================================================================
+BENCHMARK SUMMARY
+======================================================================
+    Dataset   N  Prophet_RMSE      FS_RMSE  RMSE_Improvement_pct  DM_pval  FS_Ljungbox_Pass
+  M4_Hourly 700     45.015747    53.704941            -19.302566 0.000019              True
+Electricity 500      0.932479     0.762903             18.185534 0.000000              True
+    Bitcoin 366  11699.289240 14619.624803            -24.961649 0.014888              True
+    COVID19 600 164747.474656 25239.259980             84.680032 0.000000              True
+    Airline 144     41.330542    35.082813             15.116493 0.164265              True
+
+Total Execution Time: 70.1s (1.2 minutes)
+
+======================================================================
+TMLR KEY METRICS
+======================================================================
+Average RMSE Improvement: +14.7%
+Competitive datasets (±10%): 0/5
+Diagnostic pass rate (white noise): 100%
+Significant after Bonferroni correction (α=0.0100): 3/5
+
+✓ TMLR plots saved to figures_tmlr_real/ (300 DPI)
+
+======================================================================
+✅ TMLR BENCHMARK COMPLETE
+======================================================================
+Results: benchmark_tmlr_real.csv
+Figures: figures_tmlr_real/ (8 files, 300 DPI)
