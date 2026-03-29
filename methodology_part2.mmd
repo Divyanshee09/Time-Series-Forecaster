@@ -1,0 +1,27 @@
+flowchart LR
+    IN([From Part 1:\nPreprocessed Data]) --> E
+
+    subgraph DEC ["③ STL Decomposition"]
+        E[Seasonal-Trend\nDecomposition]
+        E --> E1[Trend\nComponent]
+        E --> E2[Seasonal\nComponent]
+        E --> E3[Residual\nComponent]
+        E3 --> E4[Seasonal\nStrength Score]
+    end
+
+    E4 --> F
+
+    subgraph SEL ["④ Automated Model Selection"]
+        F[pmdarima\nStepwise Search]
+        F --> G[BIC Optimisation\nmax_order = 2]
+        G --> H1[ARIMA\np,d,q]
+        G --> H2[SARIMA\np,d,q × P,D,Q,s]
+        H1 & H2 --> BEST[Best Model\nSelected]
+    end
+
+    BEST --> OUT([To Part 3:\nForecasting])
+
+    style DEC fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style SEL fill:#fef9c3,stroke:#ca8a04,color:#451a03
+    style IN fill:#f0fdf4,stroke:#16a34a,color:#14532d
+    style OUT fill:#fff7ed,stroke:#ea580c,color:#431407

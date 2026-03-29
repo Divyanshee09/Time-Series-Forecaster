@@ -1,0 +1,29 @@
+flowchart LR
+    IN([From Part 2:\nBest Model]) --> I
+
+    subgraph FOR ["⑤ Forecasting"]
+        I[MLE Parameter\nEstimation]
+        I --> J[Point\nForecasts]
+        I --> K[95% Confidence\nIntervals]
+    end
+
+    J & K --> L
+
+    subgraph DIA ["⑥ ★ Novel: Residual Diagnostic Suite"]
+        L[Extract\nResiduals]
+        L --> M1["🔬 Ljung-Box Test\nH₀: White Noise\np > 0.05  |  lags = 10"]
+        L --> M2["📊 ACF / PACF\n95% CI Bounds\nExceedances < 5%"]
+        L --> M3["📐 Shapiro-Wilk\nNormality Test\nα = 0.05"]
+        M1 --> N{All\nTests\nPassed?}
+        M2 --> N
+        M3 --> N
+    end
+
+    N -->|✅ Yes| O([✅ Validated Forecast\nSafe for Deployment])
+    N -->|❌ No| P([⚠️ Model Warning\nReview & Refit])
+
+    style FOR fill:#ffedd5,stroke:#ea580c,color:#431407
+    style DIA fill:#fce7f3,stroke:#db2777,color:#500724
+    style IN fill:#fff7ed,stroke:#ea580c,color:#431407
+    style O fill:#bbf7d0,stroke:#15803d,color:#14532d
+    style P fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
