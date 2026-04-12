@@ -1,2 +1,0 @@
-21:44:32 - cmdstanpy - INFO - Chain [1] start processing
-21:44:32 - cmdstanpy - INFO - Chain [1] done processing
